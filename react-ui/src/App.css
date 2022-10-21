@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.root {
+  height: 100%;
+}
+
+.y-sticky {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.y-wrap {
+  margin: 0 auto;
+  width: 90%;
+}
+
+header {
+  padding: 20px 0;
+}
+
+footer {
+  padding: 40px 0;
+}
+footer,
+header {
+  background-color: #ddd;
+}
+
+main {
+  flex: 1 0 auto;
+  padding: 20px 0;
+}
