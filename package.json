@@ -1,11 +1,12 @@
 {
   "name": "cfbproject",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cd react-ui/ && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,18 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "node-fetch": "^3.2.10",
+    "node-fetch": "^3.2.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rcleveland30/cfbproject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rcleveland30/cfbproject/issues"
+  },
+  "homepage": "https://github.com/rcleveland30/cfbproject#readme",
+  "description": "",
+  "devDependencies": {
     "nodemon": "^2.0.20"
   }
 }

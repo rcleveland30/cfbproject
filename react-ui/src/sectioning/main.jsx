@@ -7,7 +7,7 @@ const Main = () => {
     <main className="y-wrap">
       <Routes>
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Teams />} />
+        <Route path="/teams" element={<Teams />} />
         <Route path="/" element={<Landing />} />
         <Route path="/search" element={<Search />} />
       </Routes>

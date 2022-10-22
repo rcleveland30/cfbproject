@@ -2,7 +2,9 @@ import React from "react";
 
 function Teams ({}) {
     return (
-        <div>Go Blue!</div>
+        <div className="y-wrap">
+            <p>Go Blue!</p>
+        </div>
     );
 };
 

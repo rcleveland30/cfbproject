@@ -18,7 +18,8 @@ function Landing ({}) {
 
     return (
         <div className="y-wrap">
-            <p>Bernard</p>
+            <input placeholder="Who's your favorite team?"></input>
+            <button>Search</button>
         </div>
     );
 };

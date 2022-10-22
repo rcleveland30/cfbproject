@@ -2,7 +2,10 @@ import React from "react";
 
 function Lookup ({}) {
     return (
-        <p>Howdy</p>
+        <div className="y-wrap">
+            <input placeholder="School name, mascot, player name, etc..."></input>
+            <button>Search</button>
+        </div>
     );
 };
 

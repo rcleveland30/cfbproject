@@ -2,7 +2,9 @@ import React from "react";
 
 function About ({}) {
     return (
-        <div className="y-wrap">About</div>
+        <div>
+            <p className="y-wrap">About</p>
+        </div>
     );
 };
 
