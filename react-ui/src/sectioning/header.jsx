@@ -5,11 +5,11 @@ const Header = () => {
   return (
     <header>
       <div className="y-wrap">
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="search">Search</NavLink>
-          <NavLink to="teams">My Teams</NavLink>
-          <NavLink to="about">About</NavLink>
+        <nav className="nav-bar">
+          <NavLink className="nav-home" to="/">Home</NavLink>
+          <NavLink className="nav-search" to="schedule">Schedule</NavLink>
+          <NavLink className="nav-teams" to="teams">My Teams</NavLink>
+          <NavLink className="nav-about" to="about">About</NavLink>
         </nav>
       </div>
     </header>

@@ -1,23 +1,14 @@
 import React, { useEffect } from "react";
 
-function Landing ({}) {
+function Landing ({ }) {
+
     useEffect(() => {
-        var url = "https://api.collegefootballdata.com/games/media/?year=2022&week=8";
-        var bearer = 'Bearer ' + '2MiMGs6jrLE51/fAzQzVpImICjEUX3+rmfIEiCFhvI69aSS2puXlOPbtDBofqE2s';
-        fetch(url, {
-        method: 'GET',
-        // withCredentials: true,
-        // credentials: 'include',
-        headers: {
-            'Authorization': bearer,
-            'Content-Type': 'application/json'
-        }
-    }).then(response => response.text())
-        .then (data => console.log('hi,mom', data))
+        fetch("/search").then(response => response.json()).then(data => console.log(data))
     }, [])
 
     return (
         <div className="y-wrap">
+            <h2>Select your favorite team</h2>
             <input placeholder="Who's your favorite team?"></input>
             <button>Search</button>
         </div>

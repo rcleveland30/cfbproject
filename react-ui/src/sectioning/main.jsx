@@ -1,15 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { About, Teams, Landing, Search } from '../views';
+import { About, Teams, Landing, Schedule } from '../views';
+
 
 const Main = () => {
   return (
     <main className="y-wrap">
       <Routes>
-        <Route path="/about" element={<About />} />
-        <Route path="/teams" element={<Teams />} />
         <Route path="/" element={<Landing />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </main>
   );

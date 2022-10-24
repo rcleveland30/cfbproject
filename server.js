@@ -1,23 +1,24 @@
 // require('dotenv').config();
+const { response } = require('express');
 const express = require('express'); //gives access to packages for server
 const path = require('path');
 const server = express();
 
-import { fetch, Request, Response } from 'node-fetch'
+const fetch = (...args) =>
+  import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 // process.env.HTTPS = true
 
-// server.use(express.json())
+server.use(express.json())
 server.use(express.static(path.resolve(__dirname + '/react-ui/build')));
 
 server.get('/', (req,res) => {
     res.sendFile(path.resolve(__dirname, './react-ui/build', 'index.html'))
 });
 
-server.get('/search', (req,res) => {
-    var url = "https://api.collegefootballdata.com/games/?year=2022&week=8";
+async function fetchData(url) {
     var bearer = 'Bearer ' + '2MiMGs6jrLE51/fAzQzVpImICjEUX3+rmfIEiCFhvI69aSS2puXlOPbtDBofqE2s';
-    fetch(url, {
+    const data = await fetch(url, {
     method: 'GET',
     withCredentials: true,
     credentials: 'include',
@@ -25,9 +26,19 @@ server.get('/search', (req,res) => {
         'Authorization': bearer,
         'Content-Type': 'application/json'
     }
-}).then(response => response.text())
-    .then (data => console.log('hi,mom', data))
+  }).then(response => response.json()).then(data => data)
+    return data;
+}
+
+server.get('/search', async(req,res) => {
+    const data = await fetchData("https://api.collegefootballdata.com/games/?year=2022&week=8")
+    res.json({data})
 })
+
+// server.get('/search', async(req,res) => {
+//     const data = await fetchData("https://api.collegefootballdata.com/teams/?year=2022&week=8")
+//     res.json({data})
+// })
 
 server.listen(8080, () => {
     console.log('The server is running at port 8080')
