@@ -62,15 +62,20 @@ main {
 }
 
 
-.nav-home, .nav-search,
+.nav-home, .nav-schedule,
 .nav-teams, .nav-about {
   border: 2px solid white;
   font-size: 1.2rem;
   padding: 5px;
 }
 
-.nav-home:hover, .nav-search:hover,
+.nav-home:hover, .nav-schedule:hover,
 .nav-teams:hover, .nav-about:hover {
   background-color: white;
   color: black;
+}
+
+.nav-home:after, .nav-schedule:after,
+.nav-teams:after, .nav-about:after {
+  color: #aaa;
 }

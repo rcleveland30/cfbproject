@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 function Landing ({ }) {
 
     useEffect(() => {
-        fetch("/search").then(response => response.json()).then(data => console.log(data))
+        fetch("/teams").then(response => response.json()).then(data => console.log(data))
     }, [])
 
     return (

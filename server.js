@@ -7,8 +7,6 @@ const server = express();
 const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-// process.env.HTTPS = true
-
 server.use(express.json())
 server.use(express.static(path.resolve(__dirname + '/react-ui/build')));
 
@@ -30,15 +28,15 @@ async function fetchData(url) {
     return data;
 }
 
-server.get('/search', async(req,res) => {
+server.get('/schedule', async(req,res) => {
     const data = await fetchData("https://api.collegefootballdata.com/games/?year=2022&week=8")
     res.json({data})
 })
 
-// server.get('/search', async(req,res) => {
-//     const data = await fetchData("https://api.collegefootballdata.com/teams/?year=2022&week=8")
-//     res.json({data})
-// })
+server.get('/teams', async(req,res) => {
+    const data = await fetchData("https://api.collegefootballdata.com/teams")
+    res.json({data})
+})
 
 server.listen(8080, () => {
     console.log('The server is running at port 8080')

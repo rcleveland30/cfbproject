@@ -7,7 +7,7 @@ const Header = () => {
       <div className="y-wrap">
         <nav className="nav-bar">
           <NavLink className="nav-home" to="/">Home</NavLink>
-          <NavLink className="nav-search" to="schedule">Schedule</NavLink>
+          <NavLink className="nav-schedule" to="schedule">Schedule</NavLink>
           <NavLink className="nav-teams" to="teams">My Teams</NavLink>
           <NavLink className="nav-about" to="about">About</NavLink>
         </nav>
