@@ -29,7 +29,7 @@ async function fetchData(url) {
 }
 
 server.get('/schedule', async(req,res) => {
-    const data = await fetchData("https://api.collegefootballdata.com/games/?year=2022&week=8")
+    const data = await fetchData("https://api.collegefootballdata.com/games/?year=2022")
     res.json({data})
 })
 

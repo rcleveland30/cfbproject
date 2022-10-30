@@ -9,9 +9,9 @@ html {
   height: 100%;
 }
 
-/* .root {
+.root {
   height: 100%;
-} */
+}
 
 .y-sticky {
   display: flex;
@@ -58,7 +58,8 @@ main {
 
 .nav-bar {
   display: flex;
-  width: 40%;
+  font-weight: bold;
+  width: 50%;
 }
 
 
@@ -66,7 +67,7 @@ main {
 .nav-teams, .nav-about {
   border: 2px solid white;
   font-size: 1.2rem;
-  padding: 5px;
+  padding: 10px;
 }
 
 .nav-home:hover, .nav-schedule:hover,
@@ -79,3 +80,24 @@ main {
 .nav-teams:after, .nav-about:after {
   color: #aaa;
 }
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.team-score {
+  border: 3px solid black;
+  font-size: 1.2rem;
+  height: 100px;
+  margin: 0 20px;
+  padding: 20px;
+  text-align: center;
+  width: 400px;
+} 
