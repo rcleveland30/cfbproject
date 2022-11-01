@@ -4,7 +4,7 @@ import { weeksSplit } from '../utils'
 import data from '../mocks/data.json'
 
 function Schedule ({ }) {
-    const [showWeek, setShowWeek] = useState('thisWeek')
+    const [showWeek, setShowWeek] = useState('current');
     const [ lastWeek, setLastWeek] = useState([]);
     const [ thisWeek, setThisWeek] = useState([]);
     const [ nextWeek, setNextWeek] = useState([]);
@@ -33,7 +33,7 @@ function Schedule ({ }) {
     }, []);
 
     function prepWeekForRendering(games) {
-        const _games = games.map((game, index) => {
+        const _games = data.map((game, index) => {
             return (
                 <div className="scoreboard">
                     <div className="team-score">
@@ -47,27 +47,26 @@ function Schedule ({ }) {
                 </div>
         )
         });
-
         return _games
     }
 
-    // const _thisWeeksGames = thisWeek.map((game, index) => {
-    //     return (
-    //         <div>
-    //             <h3 key={index}>{game.away_team}</h3>
-    //         </div>
-    //     )
-    // })
+    const _thisWeeksGames = data.map((game, index) => {
+        return (
+            <div>
+                <h3 key={index}>{game.away_team} @ {game.home_team}</h3>
+            </div>
+        )
+    })
 
-    // const _nextWeeksGames = nextWeek.map((game, index) => {
-    //     return (
-    //         <li key={index}>{game.away_team}</li>
-    //     )
-    // })
+    const _nextWeeksGames = nextWeek.map((game, index) => {
+        return (
+            <li key={index}>{game.away_team} @ {game.home_team}</li>
+        )
+    })
 
         function handleClick(e) {
-        const id = e.target.id;
-        setShowWeek(id)
+        const id = e.target.id
+        setShowWeek(id);
       }
 
     return (
@@ -80,9 +79,8 @@ function Schedule ({ }) {
                     <button id="next" onClick={handleClick}>Next Week</button>
                 </div>
                 <div>
-                    {showWeek ='last' && prepWeekForRendering(last)}
-                    {showWeek ='current' && prepWeekForRendering(current)}
-                    {showWeek ='next' && prepWeekForRendering(next)}
+                    {showWeek && prepWeekForRendering(_thisWeeksGames)}
+                    {showWeek && prepWeekForRendering(_nextWeeksGames)}
                 </div>
             </div>
         </div>
