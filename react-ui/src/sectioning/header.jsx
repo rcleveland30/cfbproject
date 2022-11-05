@@ -1,5 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import SearchIcon from "@material-ui/icons/Search";
+import CloseIcon from "@material-ui/icons/Close";
+import week9 from '../mocks/week9.json'
+import week10 from '../mocks/week10.json'
+import week11 from '../mocks/week11.json'
+
+// import { SearchBar } from '../components/search'
 
 const Header = () => {
   return (

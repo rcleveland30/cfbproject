@@ -47,7 +47,7 @@ footer {
 
 footer,
 header {
-  background-color: black;
+  background-color: green;
   color: white;
 }
 
@@ -62,6 +62,10 @@ main {
   width: 50%;
 }
 
+.search {
+  display: flex;
+  position: absolute;
+}
 
 .nav-home, .nav-schedule,
 .nav-teams, .nav-about {
@@ -73,7 +77,7 @@ main {
 .nav-home:hover, .nav-schedule:hover,
 .nav-teams:hover, .nav-about:hover {
   background-color: white;
-  color: black;
+  color: #3BA008;
 }
 
 .nav-home:after, .nav-schedule:after,
@@ -95,9 +99,18 @@ main {
 .team-score {
   border: 3px solid black;
   font-size: 1.2rem;
-  height: 100px;
+  height: 200px;
   margin: 0 20px;
   padding: 20px;
   text-align: center;
-  width: 400px;
+  width: 200px;
 } 
+
+.versus {
+  padding: 75px 0;
+}
+
+button.active{
+  background-color: black;
+  color: white;
+}

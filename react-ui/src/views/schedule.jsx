@@ -1,7 +1,9 @@
 import React from "react";
 import {useEffect, useState} from 'react';
 import { weeksSplit } from '../utils'
-import data from '../mocks/data.json'
+import week9 from '../mocks/week9.json'
+import week10 from '../mocks/week10.json'
+import week11 from '../mocks/week11.json'
 
 function Schedule ({ }) {
     const [showWeek, setShowWeek] = useState('current');
@@ -18,30 +20,31 @@ function Schedule ({ }) {
         //             thisWeeksGames,
         //             nextWeeksGames
         //         } = weeksSplit(games.data)
-        //             console.log(lastWeeksGames)
-        //             console.log(thisWeeksGames)
-        //             console.log(nextWeeksGames)
+        //             setThisWeek(lastWeeksGames)
+        //             setNextWeek(thisWeeksGames)
+        //             setLastWeek(nextWeeksGames)
         //     })
         const {
                 lastWeeksGames,
                 thisWeeksGames,
                 nextWeeksGames
-            } = weeksSplit(data)
+            } = weeksSplit([...week9, ...week10, ...week11])
                 setThisWeek(thisWeeksGames)
                 setNextWeek(nextWeeksGames)
                 setLastWeek(lastWeeksGames)
     }, []);
 
     function prepWeekForRendering(games) {
-        const _games = data.map((game, index) => {
+        const _games = games.map((game, index) => {
             return (
-                <div className="scoreboard">
+                <div key={index} className="scoreboard">
                     <div className="team-score">
-                        <h3 key={index}>{game.home_team}</h3>
+                        <h3>{game.home_team}</h3>
                         <p>{game.home_points}</p>
                     </div>
+                    <h3 className="versus">vs.</h3>
                     <div className="team-score">
-                        <h3 key={index}>{game.away_team}</h3>
+                        <h3>{game.away_team}</h3>
                         <p>{game.away_points}</p>
                     </div>
                 </div>
@@ -49,20 +52,6 @@ function Schedule ({ }) {
         });
         return _games
     }
-
-    const _thisWeeksGames = data.map((game, index) => {
-        return (
-            <div>
-                <h3 key={index}>{game.away_team} @ {game.home_team}</h3>
-            </div>
-        )
-    })
-
-    const _nextWeeksGames = nextWeek.map((game, index) => {
-        return (
-            <li key={index}>{game.away_team} @ {game.home_team}</li>
-        )
-    })
 
         function handleClick(e) {
         const id = e.target.id
@@ -74,33 +63,18 @@ function Schedule ({ }) {
             <div>
                 <h1>Scoreboard</h1>
                 <div className="btn-wrap">
-                    <button id="last" onClick={handleClick}>Prev. Week</button>
-                    <button id="current" onClick={handleClick}>This Week</button>
-                    <button id="next" onClick={handleClick}>Next Week</button>
+                    <button className={showWeek==='last'? "active": ''} id="last" onClick={handleClick}>Prev. Week</button>
+                    <button className={showWeek==='current'? "active": ''} id="current" onClick={handleClick}>This Week</button>
+                    <button className={showWeek==='next'? "active": ''} id="next" onClick={handleClick}>Next Week</button>
                 </div>
                 <div>
-                    {showWeek && prepWeekForRendering(_thisWeeksGames)}
-                    {showWeek && prepWeekForRendering(_nextWeeksGames)}
+                    {showWeek==='last' && prepWeekForRendering(lastWeek)}
+                    {showWeek==='current' && prepWeekForRendering(thisWeek)}
+                    {showWeek==='next' && prepWeekForRendering(nextWeek)}
                 </div>
             </div>
         </div>
     )
-
-    // return (
-    //     <div className="y-wrap">
-    //         <div className="game-schedule">
-    //         <h1>Last Week's Matchups</h1>
-    //             {gameDay && gameDay.map((game) => (
-    //                 <div className="game-list">
-    //                     <h3>Week {game.week}</h3>
-    //                     <p>Home: {game.home_team} - {game.home_points}</p>
-    //                     <p>Away: {game.away_team} - {game.away_points}</p>
-    //                 </div>
-    //             ))
-    //         }
-    //         </div>
-    //     </div>
-    // );
 };
 
 export default Schedule

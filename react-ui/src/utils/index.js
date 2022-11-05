@@ -1,4 +1,4 @@
-import weeks from './weeks.json'  
+import weeks from './weeks.json';
 
 export function getTodayMs() {
     const today = new Date();

@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 const { response } = require('express');
 const express = require('express'); //gives access to packages for server
 const path = require('path');
