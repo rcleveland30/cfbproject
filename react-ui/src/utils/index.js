@@ -1,11 +1,8 @@
+import { NoteTwoTone } from '@material-ui/icons';
 import weeks from './weeks.json';
 
 export function getTodayMs() {
-    const today = new Date();
-    let d = today.getDate();
-    let m = today.getMonth() + 1;
-    let y = today.getFullYear();
-    return Date.parse(`${y}-${m}-${d}`);
+    return Date.now()
   }
   
   export function getCurrentWeek() {
@@ -15,7 +12,7 @@ export function getTodayMs() {
       const prevIndex = index - 1;
       if (prevIndex >= 0) {
         previousWeek = Date.parse(weeks[prevIndex].endDate);
-        const weekMs = Date.parse(week.endDate);
+        const weekMs = Date.parse(`${week.endDate}T23:59:59`);
         return previousWeek < date && date <= weekMs;
       }
     });
