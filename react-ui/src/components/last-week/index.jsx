@@ -6,9 +6,9 @@ const LastWeek = () => {
     const lastWeek = useSelector(selectLastWeek)
 
   return (
-    <footer>
-      <div className="y-wrap">This is last week. {lastWeek} </div>
-    </footer>
+    <div>
+      <div className="landing-redux">This is last week. {lastWeek} </div>
+    </div>
   );
 };
 

@@ -5,8 +5,8 @@ function About ({}) {
         <div className="y-wrap">
             <p>*Insert Name* is a site where you can find information on your favorite college football team and players</p>
             <div>
-                <h1>Meet the Creator</h1>
-                <h2>Ronarro L. Cleveland, II</h2>
+                <h2>Meet the Creator</h2>
+                <h3>Ronarro L. Cleveland, II</h3>
             </div>
         </div>
     );

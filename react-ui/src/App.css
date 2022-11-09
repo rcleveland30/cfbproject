@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,6 +9,7 @@
 body,
 html {
   height: 100%;
+  font-family: 'Encode Sans', sans-serif;
 }
 
 .root {
@@ -34,7 +37,13 @@ input {
 }
 
 button {
+  background-color: white;
+  border: 1px solid #3BA008;
+  border-radius: 75%;
+  color: green;
+  cursor: pointer;
   font-weight: bold;
+  width: 10%;
 }
 
 header {
@@ -47,13 +56,24 @@ footer {
 
 footer,
 header {
-  background-color: green;
-  color: white;
+  background-color: white;
+  color: green;
 }
 
 main {
+  background-attachment: fixed;
+  background-image: url(https://images.unsplash.com/photo-1610729866389-fbf90649c302?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YW1lcmljYW4lMjBmb290YmFsbCUyMGZpZWxkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
   flex: 1 0 auto;
   padding: 20px 0;
+}
+
+.landing-redux {
+  color: black;
+  background-color: white;
 }
 
 .nav-bar {
@@ -69,7 +89,6 @@ main {
 
 .nav-home, .nav-schedule,
 .nav-teams, .nav-about {
-  border: 2px solid white;
   font-size: 1.2rem;
   padding: 10px;
 }
@@ -97,7 +116,9 @@ main {
 }
 
 .team-score {
-  border: 3px solid black;
+  background-color: white;
+  border: 1px solid #3BA008;
+  color: #3BA008;
   font-size: 1.2rem;
   height: 200px;
   margin: 0 20px;
@@ -110,7 +131,11 @@ main {
   padding: 75px 0;
 }
 
+.schedule-header {
+  margin-bottom: 20px;
+}
+
 button.active{
-  background-color: black;
+  background-color: green;
   color: white;
 }

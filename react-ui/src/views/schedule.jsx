@@ -4,6 +4,8 @@ import { weeksSplit } from '../utils'
 import week9 from '../mocks/week9.json'
 import week10 from '../mocks/week10.json'
 import week11 from '../mocks/week11.json'
+import week12 from '../mocks/week12.json'
+import week13 from '../mocks/week13.json'
 
 function Schedule ({ }) {
     const [showWeek, setShowWeek] = useState('current');
@@ -28,7 +30,7 @@ function Schedule ({ }) {
                 lastWeeksGames,
                 thisWeeksGames,
                 nextWeeksGames
-            } = weeksSplit([...week9, ...week10, ...week11])
+            } = weeksSplit([...week9, ...week10, ...week11, ...week12, ...week13])
                 setThisWeek(thisWeeksGames)
                 setNextWeek(nextWeeksGames)
                 setLastWeek(lastWeeksGames)
@@ -61,9 +63,9 @@ function Schedule ({ }) {
     return (
         <div className="y-wrap">
             <div>
-                <h1>Scoreboard</h1>
+                <h2 className="schedule-header">Schedule</h2>
                 <div className="btn-wrap">
-                    <button className={showWeek==='last'? "active": ''} id="last" onClick={handleClick}>Prev. Week</button>
+                    <button className={showWeek==='last'? "active": ''} id="last" onClick={handleClick}>Last Week</button>
                     <button className={showWeek==='current'? "active": ''} id="current" onClick={handleClick}>This Week</button>
                     <button className={showWeek==='next'? "active": ''} id="next" onClick={handleClick}>Next Week</button>
                 </div>
