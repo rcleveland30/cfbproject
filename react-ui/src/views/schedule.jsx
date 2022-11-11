@@ -1,6 +1,8 @@
 import React from "react";
 import {useEffect, useState} from 'react';
+import { useSelector } from "react-redux";
 import { weeksSplit } from '../utils'
+import { selectLastWeek } from '../features/lastWeekSlice'
 import week9 from '../mocks/week9.json'
 import week10 from '../mocks/week10.json'
 import week11 from '../mocks/week11.json'
@@ -13,6 +15,12 @@ function Schedule ({ }) {
     const [ thisWeek, setThisWeek] = useState([]);
     const [ nextWeek, setNextWeek] = useState([]);
     
+    // const _schedule = useSelector(selectSchedule);
+
+    // const schedules = _schedule.map((schedule, index) => {
+    //     return <li key={index}>{schedule}</li>;
+    // });
+
     useEffect(() => {
         // fetch("/schedule")
         //     .then(response => response.json())

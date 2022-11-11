@@ -3,10 +3,12 @@ const { response } = require('express');
 const express = require('express'); //gives access to packages for server
 const path = require('path');
 const server = express();
+const cors = require('cors')
 
 const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
+server.use(cors())
 server.use(express.json())
 server.use(express.static(path.resolve(__dirname + '/react-ui/build')));
 

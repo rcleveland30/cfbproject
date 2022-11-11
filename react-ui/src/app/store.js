@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import lastWeekReducer from '../components/last-week/slice'
+import lastWeekReducer from '../features/lastWeekSlice'
 
 export default configureStore ({
     reducer: {
