@@ -1,9 +1,4 @@
 import React from 'react';
-import week9 from '../mocks/week9.json'
-import week10 from '../mocks/week10.json'
-import week11 from '../mocks/week11.json'
-import week12 from '../mocks/week12.json'
-import week13 from '../mocks/week13.json'
 import { useState } from 'react';
 
 export default function SearchBar() {

@@ -1,18 +1,27 @@
-import React, { useEffect } from "react";
-import LastWeek from '../components/last-week';
+import { useState } from 'react';
+import { useSelector } from "react-redux";
 
 function Landing ({ }) {
+    
 
-    useEffect(() => {
-        // fetch("/teams").then(response => response.json()).then(data => console.log(data))
-    }, [])
+    // function handleClick(e) {
+    //     const id = e.target.id
+    //     setShowWeek(id);
+    //   }
+// incoroporate Redux and use Selector for teams API
 
     return (
         <div className="y-wrap">
-            <h2>Select your favorite team</h2>
+            <p>Welcome to **insert name**! You can do x, y, z, a, b, c </p>
+            <h3>Upcoming Games</h3>
+            <ul>
+                <li>Game 1</li>
+                <li>Game 2</li>
+                <li>Game 3</li>
+            </ul>  
+            <h2>Let's start by selecting your favorite team.</h2>
             <input placeholder="Who's your favorite team?"></input>
-            <button>Search</button>
-            <LastWeek />
+            <button className="landing-btn">Search</button>
         </div>
     );
 };

@@ -31,8 +31,15 @@ async function fetchData(url) {
 }
 
 server.get('/schedule', async(req,res) => {
-    const data = await fetchData("https://api.collegefootballdata.com/games/?year=2022")
-    res.json({data})
+    const currentWeek = req.query.currentWeek*1;
+    const _currentWeek = await fetchData(`https://api.collegefootballdata.com/games/?year=2022&week=${currentWeek}`)
+    const _lastWeek = await fetchData(`https://api.collegefootballdata.com/games/?year=2022&week=${currentWeek-1}`)
+    const _nextWeek = await fetchData(`https://api.collegefootballdata.com/games/?year=2022&week=${currentWeek+1}`)
+    res.json({
+        currentWeek : _currentWeek,
+        lastWeek : _lastWeek,
+        nextWeek : _nextWeek
+    });
 })
 
 server.get('/teams', async(req,res) => {

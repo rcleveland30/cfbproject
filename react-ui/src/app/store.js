@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import lastWeekReducer from '../features/lastWeekSlice'
+import scheduleReducer from '../features/scheduleSlice'
+import savedGamesReducer from '../features/savedGamesSlice'
 
 export default configureStore ({
     reducer: {
-        lastGames: lastWeekReducer,
+        schedule: scheduleReducer,
+        savedGames: savedGamesReducer
     }
 })

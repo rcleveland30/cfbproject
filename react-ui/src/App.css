@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 * {
   box-sizing: border-box;
@@ -9,7 +9,7 @@
 body,
 html {
   height: 100%;
-  font-family: 'Encode Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .root {
@@ -38,12 +38,13 @@ input {
 
 button {
   background-color: white;
-  border: 1px solid #3BA008;
-  border-radius: 75%;
-  color: green;
+  border: none;
+  border-radius: 5%;
+  color: #825736;;
   cursor: pointer;
-  font-weight: bold;
-  width: 10%;
+  font-size: 1rem;
+  height: 35px;
+  width: 100px;
 }
 
 header {
@@ -79,7 +80,8 @@ main {
 .nav-bar {
   display: flex;
   font-weight: bold;
-  width: 50%;
+  justify-content: space-between;
+  width: 55%;
 }
 
 .search {
@@ -89,8 +91,9 @@ main {
 
 .nav-home, .nav-schedule,
 .nav-teams, .nav-about {
+  /* border: 1px solid black; */
   font-size: 1.2rem;
-  padding: 10px;
+  padding: 10px 0px;
 }
 
 .nav-home:hover, .nav-schedule:hover,
@@ -117,15 +120,24 @@ main {
 
 .team-score {
   background-color: white;
-  border: 1px solid #3BA008;
+  border: none;
+  border-radius: 5%;
   color: #3BA008;
   font-size: 1.2rem;
   height: 200px;
   margin: 0 20px;
   padding: 20px;
   text-align: center;
-  width: 200px;
+  width: 300px;
 } 
+
+.team-score h3 {
+  height: 60px;
+}
+
+.team-score p {
+  font-size: 2.0rem;
+}
 
 .versus {
   padding: 75px 0;
@@ -135,7 +147,8 @@ main {
   margin-bottom: 20px;
 }
 
-button.active{
-  background-color: green;
+button.active,
+button.hover {
+  background-color: #825736;
   color: white;
 }

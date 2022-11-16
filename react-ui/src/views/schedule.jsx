@@ -1,85 +1,57 @@
 import React from "react";
-import {useEffect, useState} from 'react';
+import { useState } from 'react';
 import { useSelector } from "react-redux";
-import { weeksSplit } from '../utils'
-import { selectLastWeek } from '../features/lastWeekSlice'
-import week9 from '../mocks/week9.json'
-import week10 from '../mocks/week10.json'
-import week11 from '../mocks/week11.json'
-import week12 from '../mocks/week12.json'
-import week13 from '../mocks/week13.json'
+import { selectThisWeek, selectLastWeek, selectNextWeek } from '../features/scheduleSlice'
 
 function Schedule ({ }) {
+    const currentWeek = useSelector(selectThisWeek)
+    const lastWeek = useSelector(selectLastWeek)
+    const nextWeek = useSelector(selectNextWeek)
     const [showWeek, setShowWeek] = useState('current');
-    const [ lastWeek, setLastWeek] = useState([]);
-    const [ thisWeek, setThisWeek] = useState([]);
-    const [ nextWeek, setNextWeek] = useState([]);
-    
-    // const _schedule = useSelector(selectSchedule);
-
-    // const schedules = _schedule.map((schedule, index) => {
-    //     return <li key={index}>{schedule}</li>;
-    // });
-
-    useEffect(() => {
-        // fetch("/schedule")
-        //     .then(response => response.json())
-        //     .then(games => {
-        //         const {
-        //             lastWeeksGames,
-        //             thisWeeksGames,
-        //             nextWeeksGames
-        //         } = weeksSplit(games.data)
-        //             setThisWeek(lastWeeksGames)
-        //             setNextWeek(thisWeeksGames)
-        //             setLastWeek(nextWeeksGames)
-        //     })
-        const {
-                lastWeeksGames,
-                thisWeeksGames,
-                nextWeeksGames
-            } = weeksSplit([...week9, ...week10, ...week11, ...week12, ...week13])
-                setThisWeek(thisWeeksGames)
-                setNextWeek(nextWeeksGames)
-                setLastWeek(lastWeeksGames)
-    }, []);
 
     function prepWeekForRendering(games) {
-        const _games = games.map((game, index) => {
+        const _games = games && games.map((game, index) => {
             return (
                 <div key={index} className="scoreboard">
-                    <div className="team-score">
-                        <h3>{game.home_team}</h3>
-                        <p>{game.home_points}</p>
-                    </div>
-                    <h3 className="versus">vs.</h3>
                     <div className="team-score">
                         <h3>{game.away_team}</h3>
                         <p>{game.away_points}</p>
                     </div>
+                    <h3 className="versus">@</h3>
+                    <div className="team-score">
+                        <h3>{game.home_team}</h3>
+                        <p>{game.home_points}</p>
+                    </div>
+                    <button data-type={game.home_team} onClick={followClick} className="follow-btn">Follow Game</button>
                 </div>
-        )
-        });
+        )});
         return _games
     }
 
-        function handleClick(e) {
-        const id = e.target.id
+    function handleClick(e) {
+        const id = e.target.dataset.type
         setShowWeek(id);
-      }
+    }
+
+    function followClick(e) {
+        const followGame = e.target.dataset.type
+        console.log(followGame)
+    
+        
+    }
 
     return (
         <div className="y-wrap">
             <div>
                 <h2 className="schedule-header">Schedule</h2>
                 <div className="btn-wrap">
-                    <button className={showWeek==='last'? "active": ''} id="last" onClick={handleClick}>Last Week</button>
-                    <button className={showWeek==='current'? "active": ''} id="current" onClick={handleClick}>This Week</button>
-                    <button className={showWeek==='next'? "active": ''} id="next" onClick={handleClick}>Next Week</button>
+                    <button data-type='last' className={showWeek==='last' ? "active": ''} onClick={handleClick}>Week #</button>
+                    <button data-type='current' className={showWeek==='current' ? "active": ''} onClick={handleClick}>Week #</button>
+                    <button data-type='next' className={showWeek==='next' ? "active": ''} onClick={handleClick}>Week #</button>
                 </div>
                 <div>
                     {showWeek==='last' && prepWeekForRendering(lastWeek)}
-                    {showWeek==='current' && prepWeekForRendering(thisWeek)}
+                    {showWeek==='current' && prepWeekForRendering(currentWeek)}
                     {showWeek==='next' && prepWeekForRendering(nextWeek)}
                 </div>
             </div>

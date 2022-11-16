@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import store from './app/store';
-import { fetchSchedule } from './features/lastWeekSlice'
+import { fetchSchedule } from './features/scheduleSlice'
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
