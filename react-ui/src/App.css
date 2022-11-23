@@ -36,6 +36,10 @@ input {
   margin-right: 5px;
 }
 
+input::placeholder {
+  font-style: italic;
+}
+
 button {
   background-color: white;
   border: none;
@@ -46,6 +50,18 @@ button {
   height: 35px;
   width: 100px;
 }
+
+.follow-btn {
+  font-size: 1.2rem;
+  width: 10%;
+}
+
+.landing-btn {
+  height: 20%;
+  width: 30%;
+}
+
+
 
 header {
   padding-top: 20px;
@@ -72,11 +88,6 @@ main {
   padding: 20px 0;
 }
 
-.landing-redux {
-  color: black;
-  background-color: white;
-}
-
 .nav-bar {
   display: flex;
   font-weight: bold;
@@ -91,7 +102,6 @@ main {
 
 .nav-home, .nav-schedule,
 .nav-teams, .nav-about {
-  /* border: 1px solid black; */
   font-size: 1.2rem;
   padding: 10px 0px;
 }
@@ -124,11 +134,10 @@ main {
   border-radius: 5%;
   color: #3BA008;
   font-size: 1.2rem;
-  height: 200px;
   margin: 0 20px;
   padding: 20px;
   text-align: center;
-  width: 300px;
+  width: 70%;
 } 
 
 .team-score h3 {
@@ -147,8 +156,18 @@ main {
   margin-bottom: 20px;
 }
 
+.saved-games {
+  background-color: blue;
+  font-size: 1.1rem;
+  margin: 15px;
+}
+
 button.active,
 button.hover {
   background-color: #825736;
   color: white;
+}
+
+.landing-headline {
+  background-color: #3BA008;
 }

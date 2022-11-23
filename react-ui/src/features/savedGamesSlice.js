@@ -4,7 +4,10 @@ export const savedGamesSlice = createSlice({
     name: 'savedGames',
     initialState: [],
     reducers: {
-        addGame: (state, action) => [...state, action.payload]
+        addGame: (state, action) =>  {
+            const existItem = state.find((game) => game.id === action.payload.id)
+            if (!existItem) state.push(action.payload)
+        }
     },
 })
 
