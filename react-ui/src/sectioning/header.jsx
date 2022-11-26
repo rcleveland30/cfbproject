@@ -1,19 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
+import { connect } from 'react-redux';
 
-// import { SearchBar } from '../components/search'
-
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
       <div className="y-wrap">
         <nav className="nav-bar">
           <NavLink className="nav-home" to="/">Home</NavLink>
-          <NavLink className="nav-schedule" to="schedule">Schedule</NavLink>
-          <NavLink className="nav-teams" to="teams">My Teams</NavLink>
           <NavLink className="nav-about" to="about">About</NavLink>
+          {props.isLoggedIn ? <NavLink className="nav-schedule" to="schedule">Schedule</NavLink> : null }
+          {props.isLoggedIn ? <NavLink className="nav-teams" to="teams">My Teams</NavLink> : null }
           <NavLink className="nav-login" to="/login">Login</NavLink>
         </nav>
       </div>
@@ -21,4 +18,10 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(Header);

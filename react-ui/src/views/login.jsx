@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios'
+import { connect } from 'react-redux';
 import { setAuthenticationHeader } from '../utils/authenticate';
 // import { verifyAuthentication } from '../features/authenticationSlice';
 
@@ -33,8 +34,9 @@ const Login = (props) => {
         localStorage.setItem('jsonwebtoken', token)
         //set default headers
         setAuthenticationHeader(token)
-        props.history.push('/teams')
+        props.history.push('/accounts')
         localStorage.setItem('username', creds.username)
+        props.onLoggedIn()
       }
     }).catch(error => {
       console.log(error)
@@ -73,4 +75,10 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLoggedIn: () => dispatch({type: 'ON_LOGGED_IN'})
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);
