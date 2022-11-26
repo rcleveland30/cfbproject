@@ -1,9 +1,10 @@
-import { application } from 'express';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import axios from 'axios'
+import { setAuthenticationHeader } from '../utils/authenticate';
 // import { verifyAuthentication } from '../features/authenticationSlice';
 
-const Login = () => {
+const Login = (props) => {
   const [creds, setCreds] = useState({});
 
   const dispatch = useDispatch();
@@ -22,33 +23,38 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    fetch('http://localhost:8080/login', {
-        method: 'POST',
-        headers: { 
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(creds)
-    }) .then(response => response.json())
-    .then(result => {
-        if(result.success == true) {
-            const token = result.token
-            // put token in local storage
-            localStorage.setItem('jsonwebtoken', token)
-        }
+
+    axios.post('http://localhost:8080/login', {
+      username: creds.username,
+      password: creds.password
+    }).then(response => {
+      if(response.data){
+        const token = response.data.token
+        localStorage.setItem('jsonwebtoken', token)
+        //set default headers
+        setAuthenticationHeader(token)
+        props.history.push('/teams')
+        localStorage.setItem('username', creds.username)
+      }
+    }).catch(error => {
+      console.log(error)
     })
   }
 
   const handleAllAccounts = () => {
-    fetch('http://localhost:8080/accounts', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({username: creds.username})
-    }) .then(response => response.json())
-    .then (accounts => {
-        console.log(accounts)
-    })
+
+    const token = localStorage.getItem("jsonwebtoken")
+
+    axios.get(`http://localhost:8080/accounts/${creds.username}`)
+    .then(response => console.log(response))
+    .catch(error=> console.log(error))
+
+  }
+
+  const handleGetProfile = () => {
+    axios.get(`http://localhost:8080/profile/${creds.username}`)
+    .then(response => console.log(response))
+    .catch(error=> console.log(error))
   }
  
   return (
@@ -59,7 +65,9 @@ const Login = () => {
           <input name='password' onChange={handleChange} placeholder='password' type='password' value={creds.password ?? ''} />
         </div>
         <button onClick={handleLogin}>Login</button>
-        <button onClick={handleAllAccounts}>Get all accounts</button>
+        <button onClick={handleAllAccounts}>All Accounts</button>
+        <button onClick={handleGetProfile}>Profile</button>
+      
       </form>
     </div>
   );

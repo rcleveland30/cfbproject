@@ -101,19 +101,19 @@ main {
 }
 
 .nav-home, .nav-schedule,
-.nav-teams, .nav-about {
+.nav-teams, .nav-about, .nav-login {
   font-size: 1.2rem;
   padding: 10px 0px;
 }
 
 .nav-home:hover, .nav-schedule:hover,
-.nav-teams:hover, .nav-about:hover {
+.nav-teams:hover, .nav-about:hover, .nav-login:hover {
   background-color: white;
   color: #3BA008;
 }
 
 .nav-home:after, .nav-schedule:after,
-.nav-teams:after, .nav-about:after {
+.nav-teams:after, .nav-about:after, .nav-login:after {
   color: #aaa;
 }
 

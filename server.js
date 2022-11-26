@@ -36,7 +36,7 @@ async function fetchData(url) {
 //////////////////////////////////
 // LOGIN JWT
 global.users = [
-    { username: 'johndoe', password: 'password'},
+    {username: 'johndoe', password: 'password'},
     {username: 'marydoe', password: 'password'}
 ];
 
@@ -52,6 +52,10 @@ server.post('/deposit', authenticate, (req, res) => {
 
 });
 
+server.get('/profile/:username', authenticate, (req, res) => {
+    
+})
+
 server.get('/accounts/:username', authenticate, (req, res) => {
 
     const username = req.params.username
@@ -61,7 +65,6 @@ server.get('/accounts/:username', authenticate, (req, res) => {
 });
 
 server.post('/login', (req, res) => {
-    
     const username = req.body.username
     const password = req.body.password
 
