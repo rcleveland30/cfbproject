@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "db:create": "npx sequelize-cli db:create",
+    "db:destroy": "npx sequelize-cli db:drop",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:reset": "npm run db:destroy; npm run db:create && npm run db:migrate && npm run db:seed",
+    "db:seed": "npx sequelize-cli db:seed:all",
+    "db:setup": "npm run db:create && npm run db:migrate && npm run db:seed",
     "build": "cd react-ui/ && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
@@ -15,12 +21,16 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "axios": "^1.2.0",
+    "cli": "^1.0.1",
     "config": "^3.3.8",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "init": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
-    "node-fetch": "^3.2.10"
+    "node-fetch": "^3.2.10",
+    "pg": "^8.8.0",
+    "sequelize": "^6.25.8"
   },
   "repository": {
     "type": "git",
@@ -32,6 +42,7 @@
   "homepage": "https://github.com/rcleveland30/cfbproject#readme",
   "description": "",
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.2"
   }
 }

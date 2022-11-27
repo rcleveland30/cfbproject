@@ -57,11 +57,9 @@ server.get('/profile/:username', authenticate, (req, res) => {
 })
 
 server.get('/accounts/:username', authenticate, (req, res) => {
-
     const username = req.params.username
     const userAccounts = accounts.filter((account) => account.username == username)
     res.json(userAccounts)
-
 });
 
 server.post('/login', (req, res) => {
@@ -79,6 +77,28 @@ server.post('/login', (req, res) => {
     }
 });
 ///////////////////////////////
+
+// Login information to connect to PSQL server
+// To see login in state
+server.post('/login', async (req,res) => {
+    const {username,password} = req.body //sending up username and password
+    console.log(username,password)
+    // const user = await User.findOne({ //talks to database, await needs value so rest of code runs
+    //     where: {                        //cache into user
+    //         email: username,            //object is setting parameters
+    //         password                    
+    //     }
+    // })
+    // console.log(user)
+    // if (user) {                         //conditional
+    //     req.session.user = user         
+    //     res.redirect(`/users/${user.id}`)
+    // } else {
+    //     res.json({
+    //         message: 'There is a problem with the username or password'
+    //     })
+    // }
+})
 
 
 // Fetch games from API

@@ -24,6 +24,7 @@ function Schedule ({ }) {
         const {id, week, away_team, away_points, home_team, home_points} = game;
             return (
                 <div key={index} className="scoreboard">
+                <button onClick={() => followClick ({id, week, away_team, away_points, home_team, home_points})} className="follow-btn">+</button>
                     <div className="team-score">
                         <h3>{away_team}</h3>
                         <p>{away_points}</p>
@@ -33,7 +34,6 @@ function Schedule ({ }) {
                         <h3>{home_team}</h3>
                         <p>{home_points}</p>
                     </div>
-                    <button onClick={() => followClick ({id, week, away_team, away_points, home_team, home_points})} className="follow-btn">+</button>
                 </div>
         )});
         return _games
@@ -57,8 +57,10 @@ function Schedule ({ }) {
     return (
         <div className="y-wrap">
             <div>
-                <SearchBar data={currentWeek} />
-                <h2 className="schedule-header">Schedule</h2>
+                <div className="search-header">
+                    <h2 className="schedule-header">Schedule</h2>
+                    <SearchBar data={currentWeek} />
+                </div>
                 <div className="btn-wrap">
                     <button data-type='last' className={showWeek==='last' ? "active": ''} onClick={handleClick}>Prev. Week</button>
                     <button data-type='current' className={showWeek==='current' ? "active": ''} onClick={handleClick}>This Week</button>

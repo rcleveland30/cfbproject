@@ -19,7 +19,7 @@ export default function SearchBar({ data }) {
 
   return (
     <div className="App">
-      <input value={searchTerm} onChange={handleChange} />
+      <input placeholder="Search" value={searchTerm} onChange={handleChange} />
     </div>
   );
 }

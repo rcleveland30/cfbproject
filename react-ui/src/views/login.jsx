@@ -43,22 +43,7 @@ const Login = (props) => {
     })
   }
 
-  const handleAllAccounts = () => {
 
-    const token = localStorage.getItem("jsonwebtoken")
-
-    axios.get(`http://localhost:8080/accounts/${creds.username}`)
-    .then(response => console.log(response))
-    .catch(error=> console.log(error))
-
-  }
-
-  const handleGetProfile = () => {
-    axios.get(`http://localhost:8080/profile/${creds.username}`)
-    .then(response => console.log(response))
-    .catch(error=> console.log(error))
-  }
- 
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -66,10 +51,7 @@ const Login = (props) => {
           <input name='username' onChange={handleChange} placeholder='username' value={creds.username ?? ''} />
           <input name='password' onChange={handleChange} placeholder='password' type='password' value={creds.password ?? ''} />
         </div>
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={handleAllAccounts}>All Accounts</button>
-        <button onClick={handleGetProfile}>Profile</button>
-      
+        <button onClick={handleLogin}>Login</button> 
       </form>
     </div>
   );

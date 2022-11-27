@@ -171,3 +171,8 @@ button.hover {
 .landing-headline {
   background-color: #3BA008;
 }
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+}
