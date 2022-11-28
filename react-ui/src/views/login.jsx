@@ -1,14 +1,23 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, connect, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+// import { fetchLogin, selectIsLoggedIn } from '../features/authenticationSlice';
 import axios from 'axios'
-import { connect } from 'react-redux';
 import { setAuthenticationHeader } from '../utils/authenticate';
-// import { verifyAuthentication } from '../features/authenticationSlice';
+import { selectIsAuth, verifyAuthentication } from '../features/authenticationSlice';
 
-const Login = (props) => {
+const Login = () => {
   const [creds, setCreds] = useState({});
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsAuth);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/teams");
+    }
+  });
 
   const handleChange = e => {
     const key = e.target.name;
@@ -19,7 +28,9 @@ const Login = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // dispatch(verifyAuthentication(creds));
+    // const { username, password } = creds
+    dispatch(verifyAuthentication(creds));
+    // setCreds({password, username});
     setCreds({});
   };
 
@@ -34,9 +45,8 @@ const Login = (props) => {
         localStorage.setItem('jsonwebtoken', token)
         //set default headers
         setAuthenticationHeader(token)
-        props.history.push('/accounts')
         localStorage.setItem('username', creds.username)
-        props.onLoggedIn()
+        // props.onLoggedIn()
       }
     }).catch(error => {
       console.log(error)

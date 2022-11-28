@@ -5,7 +5,8 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 const server = express();
 const cors = require('cors');
-const authenticate = require('./middlewares/authMiddleware')
+const { User } = require('./models')
+const authenticate = require('./middlewares')
 const { appendFile } = require('fs');
 
 const fetch = (...args) =>
@@ -18,6 +19,7 @@ server.use(express.static(path.resolve(__dirname + '/react-ui/build')));
 server.get('/', (req,res) => {
     res.sendFile(path.resolve(__dirname, './react-ui/build', 'index.html'))
 });
+
 
 async function fetchData(url) {
     var bearer = 'Bearer ' + '2MiMGs6jrLE51/fAzQzVpImICjEUX3+rmfIEiCFhvI69aSS2puXlOPbtDBofqE2s';
@@ -33,73 +35,22 @@ async function fetchData(url) {
     return data;
 }
 
-//////////////////////////////////
 // LOGIN JWT
-global.users = [
-    {username: 'johndoe', password: 'password'},
-    {username: 'marydoe', password: 'password'}
-];
-
-const accounts = [
-    {accountType: 'checking', balance: 5000, username: 'johndoe'},
-    {accountType: 'savings', balance: 15000, username: 'johndoe'},
-    {accountType: 'checking', balance: 3000, username: 'marydoe'}
-]
-
-server.use(express.json())
-
-server.post('/deposit', authenticate, (req, res) => {
-
-});
-
-server.get('/profile/:username', authenticate, (req, res) => {
-    
-})
-
-server.get('/accounts/:username', authenticate, (req, res) => {
-    const username = req.params.username
-    const userAccounts = accounts.filter((account) => account.username == username)
-    res.json(userAccounts)
-});
-
-server.post('/login', (req, res) => {
-    const username = req.body.username
-    const password = req.body.password
-
-    const user = users.find((user) => user.username == username && user.password == password)
+server.post('/login', authenticate, async (req, res) => {
+    const { password, username } = req.body;
+    const user = await User.findOne({
+      where: {
+        password,
+        username
+      }
+    });
     if (user) {
-        // generate the jwt
-        const token = jwt.sign({username: user.username}, 'SECRETKEY')
-        res.json({success: true, token: token})
+      const token = jwt.sign({username: user.username}, 'SECRETKEY')
+      res.json({isSuccess: true, token: token});
     } else {
-        // response with not authenticated
-        res.json ({success: false, message: 'Not authenticated'})
+      res.json({isSuccess: false, message: 'Not authenticated'});
     }
-});
-///////////////////////////////
-
-// Login information to connect to PSQL server
-// To see login in state
-server.post('/login', async (req,res) => {
-    const {username,password} = req.body //sending up username and password
-    console.log(username,password)
-    // const user = await User.findOne({ //talks to database, await needs value so rest of code runs
-    //     where: {                        //cache into user
-    //         email: username,            //object is setting parameters
-    //         password                    
-    //     }
-    // })
-    // console.log(user)
-    // if (user) {                         //conditional
-    //     req.session.user = user         
-    //     res.redirect(`/users/${user.id}`)
-    // } else {
-    //     res.json({
-    //         message: 'There is a problem with the username or password'
-    //     })
-    // }
-})
-
+  });
 
 // Fetch games from API
 server.get('/schedule', async(req,res) => {
