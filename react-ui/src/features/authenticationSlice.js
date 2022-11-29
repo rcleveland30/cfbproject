@@ -1,41 +1,3 @@
-// import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-// // writing to the store
-// export const fetchLogin = createAsyncThunk('login/user', async ({password, username}) => {
-
-//   const options = {
-//     body: JSON.stringify({password, username}),
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     method: 'POST',
-//   };
-
-//   const response = await fetch('http://localhost:8080/login', options);
-//   const data = await response.json();
-//   if (password === 'password' && username === 'johndoe') {
-//     return true;
-//   }
-//   return false;
-// });
-
-// export const isLoggedInSlice = createSlice({
-//   name: 'users',
-//   initialState: false,
-//   reducers: {},
-//   extraReducers(builder) {
-//     builder.addCase(fetchLogin.fulfilled, (state, action) => {
-//       return action.payload;
-//     });
-//   }
-// });
-
-// // reading from the store
-// export const selectIsLoggedIn = state => state.isLoggedIn;
-
-// export default isLoggedInSlice.reducer;
-
-
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const fetchLogin = async (password, username) => {
@@ -93,7 +55,7 @@ export const authenticationSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(verifyAuthentication.fulfilled, (state, action) => {
-      return action.payload;
+      return true;
     });
   }
 });

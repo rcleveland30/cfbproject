@@ -15,7 +15,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/teams");
+      navigate("/schedule");
     }
   });
 
@@ -61,7 +61,7 @@ const Login = () => {
           <input name='username' onChange={handleChange} placeholder='username' value={creds.username ?? ''} />
           <input name='password' onChange={handleChange} placeholder='password' type='password' value={creds.password ?? ''} />
         </div>
-        <button onClick={handleLogin}>Login</button> 
+        <button onClick={handleLogin}>Login</button>
       </form>
     </div>
   );

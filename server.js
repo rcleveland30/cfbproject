@@ -35,8 +35,12 @@ async function fetchData(url) {
     return data;
 }
 
+server.get('/protected', authenticate, (req,res) => {
+  res.json({isLoggedIn: true})
+});
+
 // LOGIN JWT
-server.post('/login', authenticate, async (req, res) => {
+server.post('/login', async (req, res) => {
     const { password, username } = req.body;
     const user = await User.findOne({
       where: {
@@ -45,7 +49,10 @@ server.post('/login', authenticate, async (req, res) => {
       }
     });
     if (user) {
-      const token = jwt.sign({username: user.username}, 'SECRETKEY')
+      const token = jwt.sign({username: user.username}, 'SECRETKEY', {
+        algorithm: 'HS256',
+        expiresIn: 180,
+      })
       res.json({isSuccess: true, token: token});
     } else {
       res.json({isSuccess: false, message: 'Not authenticated'});
