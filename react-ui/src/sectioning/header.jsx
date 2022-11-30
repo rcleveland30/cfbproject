@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const Header = (props) => {
 
   // const handleLogout = () => {
-  //   localStorage.removeItem('jsonwebtoken');
+  //   localStorage.clear()
   // };
 
   return (
@@ -17,8 +17,8 @@ const Header = (props) => {
         <nav className="nav-bar">
           <NavLink className="nav-home" to="/">Home</NavLink>
           <NavLink className="nav-about" to="about">About</NavLink>
-          {props.isLoggedIn ? <NavLink className="nav-schedule" to="schedule">Schedule</NavLink> : null }
-          {props.isLoggedIn ? <NavLink className="nav-teams" to="teams">My Teams</NavLink> : null }
+          <NavLink className="nav-schedule" to="schedule">Schedule</NavLink>
+          <NavLink className="nav-teams" to="teams">My Teams</NavLink>
           <NavLink className="nav-login" to="/login">Login</NavLink>
         </nav>
       </div>

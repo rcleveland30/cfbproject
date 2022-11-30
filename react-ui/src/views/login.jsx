@@ -10,7 +10,6 @@ const Login = () => {
   const [creds, setCreds] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
   const isLoggedIn = useSelector(selectIsAuth);
 
   useEffect(() => {
@@ -28,9 +27,7 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // const { username, password } = creds
     dispatch(verifyAuthentication(creds));
-    // setCreds({password, username});
     setCreds({});
   };
 
@@ -46,7 +43,6 @@ const Login = () => {
         //set default headers
         setAuthenticationHeader(token)
         localStorage.setItem('username', creds.username)
-        // props.onLoggedIn()
       }
     }).catch(error => {
       console.log(error)
@@ -55,9 +51,10 @@ const Login = () => {
 
 
   return (
-    <div>
+    <div className="form-wrapper">
       <form onSubmit={handleSubmit}>
         <div>
+          <h2>Sign-in</h2>
           <input name='username' onChange={handleChange} placeholder='username' value={creds.username ?? ''} />
           <input name='password' onChange={handleChange} placeholder='password' type='password' value={creds.password ?? ''} />
         </div>

@@ -16,15 +16,15 @@ function Teams ({}) {
 
     return (
         <div className="y-wrap">
-            <div className="games-list">
-                <h2>Games you're following:</h2>
-                <div>{_myGames}</div>
-            </div>
-            <div className="teams-list">
-                <h2>Teams you follow:</h2>
-                <ul>
-                    <li>Michigan</li>
-                </ul>
+            <div className="profile-wrapper">
+                <div className="games-list">
+                    <h2>Games you're following:</h2>
+                    <div className="saved-games">{_myGames}</div>
+                </div>
+                <div className="teams-list">
+                    <h2>Teams you follow:</h2>
+                    <div className="saved-games">Michigan</div>
+                </div>
             </div>
         </div>
     );

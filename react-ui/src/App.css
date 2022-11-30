@@ -12,6 +12,41 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+form {
+  align-items: center;
+  background: white;
+  border: 2px solid #3BA008;
+  border-radius: 10px;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  padding: 30px 40px;
+  width: 100%;
+}
+
+form h2 {
+  color: #3BA008;
+  text-align: center;
+}
+
+form input {
+  margin: 5px 0;
+  width: 100%;
+}
+
+form button {
+  background-color: #3BA008;
+  color: white;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  transform: translate(0, 50%);
+}
+
 .root {
   height: 100%;
 }
@@ -25,10 +60,6 @@ html {
 .y-wrap {
   margin: 0 auto;
   width: 95%;
-}
-
-h1 {
-  padding: 5px;
 }
 
 input, button {
@@ -56,6 +87,8 @@ button {
 }
 
 .follow-btn {
+  position: relative;
+  transform: translate(0, 200%);
   font-size: 1.2rem;
   width: 10%;
 }
@@ -93,8 +126,8 @@ main {
 .nav-bar {
   display: flex;
   font-weight: bold;
-  justify-content: space-between;
-  width: 40%;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .search {
@@ -159,19 +192,23 @@ main {
 }
 
 .saved-games {
-  background-color: blue;
+  background-color: white;
+  color: #3BA008;
   font-size: 1.1rem;
-  margin: 15px;
+  margin: 10px;
+  /* width: 75%; */
 }
 
-button.active,
-button.hover {
+button:hover {
   background-color: #825736;
   color: white;
 }
 
 .landing-headline {
-  background-color: #3BA008;
+  background-color: whitesmoke;
+  color: #3BA008;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .search-header {
@@ -180,7 +217,12 @@ button.hover {
 }
 
 .site-name {
+  text-align: center;
+  width: 100%;
+}
+
+.landing-wrapper, .profile-wrapper {
   display: flex;
-  justify-content: center;
-  width: 90%;
+  columns: 2;
+  justify-content: space-evenly;
 }
