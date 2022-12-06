@@ -1,8 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import SearchBar from '../components/search';
+import { useNavigate } from "react-router-dom";
+import { selectIsAuth } from '../features/authenticationSlice';
 
 function Landing ({ }) {
+    const isLoggedIn = useSelector(selectIsAuth);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLoggedIn) {
+          navigate("/login");
+        }
+      });
 
     return (
         <div className="y-wrap">

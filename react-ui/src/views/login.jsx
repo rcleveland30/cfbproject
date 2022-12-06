@@ -14,7 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/schedule");
+      navigate("/");
     }
   });
 

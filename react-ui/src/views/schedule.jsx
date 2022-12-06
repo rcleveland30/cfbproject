@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "../components/search";
 import { selectThisWeek, selectLastWeek, selectNextWeek } from '../features/scheduleSlice'
 import { selectSavedGames, addGame } from '../features/savedGamesSlice'
+import { useNavigate } from "react-router-dom";
 import { doSearchData, selectSearchData } from "../features/searchDataSlice";
+import { selectIsAuth } from '../features/authenticationSlice';
+
 
 function Schedule ({ }) {
     const currentWeek = useSelector(selectThisWeek)
@@ -12,7 +15,15 @@ function Schedule ({ }) {
     const nextWeek = useSelector(selectNextWeek)
     const searchData = useSelector(selectSearchData)
     const [showWeek, setShowWeek] = useState('current');
+    const isLoggedIn = useSelector(selectIsAuth);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (!isLoggedIn) {
+          navigate("/login");
+        }
+      });
     
     useEffect(() => {
         dispatch(doSearchData(currentWeek));

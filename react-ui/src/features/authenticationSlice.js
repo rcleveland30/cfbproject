@@ -52,7 +52,9 @@ export const verifyAuthentication = createAsyncThunk('auth/verify', async ({pass
 export const authenticationSlice = createSlice({
   name: 'isAuth',
   initialState: false,
-  reducers: {},
+  reducers: {
+    doLogout: (state) => false // Logout from Anna
+  },
   extraReducers(builder) {
     builder.addCase(verifyAuthentication.fulfilled, (state, action) => {
       return true;
@@ -61,5 +63,7 @@ export const authenticationSlice = createSlice({
 });
 
 export const selectIsAuth = state => state.isAuth;
+
+export const { doLogout } = authenticationSlice.actions;
 
 export default authenticationSlice.reducer;

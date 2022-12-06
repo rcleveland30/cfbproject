@@ -1,9 +1,21 @@
 import React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectSavedGames } from '../features/savedGamesSlice'
+import { useNavigate } from "react-router-dom";
+import { selectIsAuth } from '../features/authenticationSlice';
+
 
 function Teams ({}) {
     const myGames = useSelector(selectSavedGames)
+    const isLoggedIn = useSelector(selectIsAuth);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLoggedIn) {
+          navigate("/login");
+        }
+      });
 
     const _myGames = myGames.map((myGame, index) => {
     const {week, away_team, away_points, home_team, home_points} = myGame;
