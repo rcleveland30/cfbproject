@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from "react-redux";
-import SearchBar from '../components/search';
 import { useNavigate } from "react-router-dom";
 import { selectIsAuth } from '../features/authenticationSlice';
+
 
 function Landing ({ }) {
     const isLoggedIn = useSelector(selectIsAuth);
@@ -20,7 +20,11 @@ function Landing ({ }) {
             <div className="landing-wrapper">
                 <div className="search-team">
                     <h3>Select Your Favorite Team</h3>
-                    <input placeholder="ex/ Michigan" />
+                    <input 
+                        type="text" 
+                        placeholder="ex/ Michigan" 
+                    />
+                    <br />
                 </div>
                 <div className="upcoming-games">
                     <h3>Upcoming Games</h3>

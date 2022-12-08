@@ -6,7 +6,7 @@ function About ({}) {
         <div className="y-wrap">
             <div>
                 <h2>Meet the Creator</h2>
-                <img src={aboutPic} className="about-pic" alt="Ronarro CLeveland, II" />
+                <img src={aboutPic} className="about-pic" alt="Ronarro Cleveland, II" />
                 <h3>Ronarro L. Cleveland, II</h3>
             </div>
         </div>

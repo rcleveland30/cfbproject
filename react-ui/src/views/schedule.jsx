@@ -25,9 +25,19 @@ function Schedule ({ }) {
         }
       });
     
+    // useEffect(() => {
+    //     dispatch(doSearchData(currentWeek));
+    // }, [currentWeek]);
+
     useEffect(() => {
-        dispatch(doSearchData(currentWeek));
-    }, [currentWeek]);
+        if ('last') {
+            dispatch(doSearchData(lastWeek));
+        } else if ('current') {
+            dispatch(doSearchData(currentWeek));
+        } else {
+            dispatch(doSearchData(nextWeek));
+        }
+    }, []);
 
 
     function prepWeekForRendering(games) {
