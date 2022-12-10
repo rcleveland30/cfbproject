@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 const server = express();
 const cors = require('cors');
-const { User } = require('./models')
+const { User, Game } = require('./models')
 const authenticate = require('./middlewares')
 const { appendFile } = require('fs');
 
@@ -58,6 +58,28 @@ server.post('/login', async (req, res) => {
       res.json({isSuccess: false, message: 'Not authenticated'});
     }
   });
+
+server.post('/games', async (req,res) => {
+  try {
+    await Game.create(req.body);
+    res.json({ message: 'success' });
+  } catch(error) {
+    console.log(error)
+    res.json({ message: 'failure' })
+  }
+});
+
+server.get('/games', async (req,res) => {
+  try {
+    const games = await Game.findAll();
+    res.json(games);
+  } catch(error) {
+    console.log(error)
+    res.json({ message: 'failure' })
+  }
+});
+
+
 
 // Fetch games from API
 server.get('/schedule', async(req,res) => {

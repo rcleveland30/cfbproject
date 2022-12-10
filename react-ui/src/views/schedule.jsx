@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "../components/search";
@@ -73,6 +74,18 @@ function Schedule ({ }) {
 
     function followClick(game) {
         dispatch(addGame(game))
+
+        axios.post('http://localhost:8080/games', {
+            week: game.week,
+            homeTeam: game.home_team,
+            awayTeam: game.away_team
+          }).then(response => {
+            if(response.data){
+                console.log(response.data)
+            }
+          }).catch(error => {
+            console.log(error)
+          })
     };
 
     return (

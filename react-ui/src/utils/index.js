@@ -1,4 +1,3 @@
-import { NoteTwoTone } from '@material-ui/icons';
 import weeks from './weeks.json';
 
 export function getTodayMs() {

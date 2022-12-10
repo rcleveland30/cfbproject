@@ -20,11 +20,7 @@ function Landing ({ }) {
             <div className="landing-wrapper">
                 <div className="search-team">
                     <h3>Select Your Favorite Team</h3>
-                    <input 
-                        type="text" 
-                        placeholder="ex/ Michigan" 
-                    />
-                    <br />
+                    <p>Coming soon!</p>
                 </div>
                 <div className="upcoming-games">
                     <h3>Upcoming Games</h3>

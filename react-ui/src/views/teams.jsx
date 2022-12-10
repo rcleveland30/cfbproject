@@ -1,5 +1,6 @@
 import React from "react";
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectSavedGames } from '../features/savedGamesSlice'
 import { useNavigate } from "react-router-dom";
@@ -7,24 +8,39 @@ import { selectIsAuth } from '../features/authenticationSlice';
 
 
 function Teams ({}) {
-    const myGames = useSelector(selectSavedGames)
+    // const myGames = useSelector(selectSavedGames)
+    const [myGames, setMyGames] = useState([]);
     const isLoggedIn = useSelector(selectIsAuth);
     const navigate = useNavigate();
 
+
+//if authenticated
     useEffect(() => {
         if (!isLoggedIn) {
           navigate("/login");
         }
       });
 
+    useEffect(() => {
+    axios.get('http://localhost:8080/games').then(response => {
+        if(response.data){
+            setMyGames(response.data);
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+    }, []);
+
     const _myGames = myGames.map((myGame, index) => {
-    const {week, away_team, away_points, home_team, home_points} = myGame;
+    const {week, awayTeam, away_points, homeTeam, home_points} = myGame;
         return (
             <div>
-                <p className="saved-games">Week {week} | {away_team} @ {home_team}</p>
+                <p className="saved-games">Week {week} | {awayTeam} @ {homeTeam}</p>
             </div>
         )
     })
+
+
 
     return (
         <div className="y-wrap">
