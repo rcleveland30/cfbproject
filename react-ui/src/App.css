@@ -226,3 +226,8 @@ button:hover {
   columns: 2;
   justify-content: space-evenly;
 }
+
+.about-pic {
+  border-radius: 60%;
+  width: 500px;
+}

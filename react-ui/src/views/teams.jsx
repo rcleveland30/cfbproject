@@ -51,7 +51,7 @@ function Teams ({}) {
                 </div>
                 <div className="teams-list">
                     <h2>Teams you follow:</h2>
-                    <div className="saved-games">Michigan</div>
+                    <div className="saved-games">UNDER CONSTRUCTION</div>
                 </div>
             </div>
         </div>

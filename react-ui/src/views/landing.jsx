@@ -20,14 +20,12 @@ function Landing ({ }) {
             <div className="landing-wrapper">
                 <div className="search-team">
                     <h3>Select Your Favorite Team</h3>
-                    <p>Coming soon!</p>
+                    <p>COMING SOON!</p>
                 </div>
                 <div className="upcoming-games">
                     <h3>Upcoming Games</h3>
                     <ul>
-                        <li>Game 1</li>
-                        <li>Game 2</li>
-                        <li>Game 3</li>
+                        <p>COMING SOON!</p>
                     </ul>
                 </div>
             </div>
