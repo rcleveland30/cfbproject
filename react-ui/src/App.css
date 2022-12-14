@@ -227,7 +227,35 @@ button:hover {
   justify-content: space-evenly;
 }
 
+.about-pg {
+  display: flex;
+  justify-content: center;
+}
+
+.about-p {
+  background-color: #E1F2F8;
+  border-radius: 5px;
+  color:#3BA008 ;
+  display: grid;
+  font: 2rem;
+  grid-row: 1 / span 2;
+  margin: 1% auto;
+  width: 60%;
+}
+
+.about-h h2, h3 {
+  text-align: center;
+}
+
+.about-h {
+  margin-bottom: 2%;
+}
+
+.about-p p {
+  margin-left: 10px;
+}
+
 .about-pic {
-  border-radius: 60%;
-  width: 500px;
+  border-radius: 50%;
+  width: 800px;
 }
